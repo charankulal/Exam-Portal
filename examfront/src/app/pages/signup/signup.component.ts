@@ -8,6 +8,7 @@ import { UserService } from '../../services/user.service';
 import { error } from 'console';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -18,6 +19,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
+
   ],
 
 
@@ -53,13 +55,61 @@ export class SignupComponent implements OnInit{
       })
       return;
     }
+    if (this.user.password==null||this.user.password=='') {
+      // alert('Username is required');
+      this.snack.open("Password is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
+      return;
+    }
+    if (this.user.firstName==null||this.user.firstName=='') {
+      // alert('Username is required');
+      this.snack.open("Firstname is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
+      return;
+    }
+    if (this.user.lastName==null||this.user.lastName=='') {
+      // alert('Username is required');
+      this.snack.open("Lastname is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
+      return;
+    }
+    if (this.user.email==null||this.user.email=='') {
+      // alert('Username is required');
+      this.snack.open("Email Id is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
+      return;
+    }
+    if (this.user.phone==null||this.user.phone=='') {
+      // alert('Username is required');
+      this.snack.open("Phone number is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
+      return;
+    }
     console.log(this.user);
     //addUser function from UserService
     this.userService.addUser(this.user).subscribe(
       (data)=>{
         //succcess
         console.log(data)
-        alert("Success")
+        this.snack.open('User is successfully registered','OK',{
+          duration:3000,
+        })
+
       },
       (error)=>{
         //error

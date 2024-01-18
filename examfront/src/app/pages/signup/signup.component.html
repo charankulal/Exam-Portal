@@ -6,12 +6,13 @@
           <img class="signup-img" src="../../../assets/signup.png " alt="" />
         </div>
         <h1 class="text-center">Register Here!!</h1>
-      
+
         <form (ngSubmit)="formSubmit()">
           <!-- UserName Field -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Username</mat-label>
             <input
+            required
               matInput
               placeholder="Enter Username"
               name="username"
@@ -24,7 +25,7 @@
           <!-- Password Field-->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Password</mat-label>
-            <input type="password" matInput placeholder="Enter Password"
+            <input required type="password" matInput placeholder="Enter Password"
             name="password"
               [(ngModel)]="user.password"
               [ngModelOptions]="{ standalone: true }" />
@@ -33,7 +34,7 @@
           <!-- First name field  -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Firstname</mat-label>
-            <input matInput placeholder="Enter Firstname"
+            <input required matInput placeholder="Enter Firstname"
             name="firstName"
               [(ngModel)]="user.firstName"
               [ngModelOptions]="{ standalone: true }" />
@@ -42,7 +43,7 @@
           <!-- Lastname field  -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Lastname</mat-label>
-            <input matInput placeholder="Enter Lastname"
+            <input required matInput placeholder="Enter Lastname"
             name="lastName"
               [(ngModel)]="user.lastName"
               [ngModelOptions]="{ standalone: true }" />
@@ -51,7 +52,7 @@
           <!-- Email field  -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Email Address</mat-label>
-            <input type="email" matInput placeholder="Enter Email"
+            <input required type="email" matInput placeholder="Enter Email"
             name="email"
               [(ngModel)]="user.email"
               [ngModelOptions]="{ standalone: true }" />
@@ -60,8 +61,9 @@
           <!-- Phone -->
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Phone Number</mat-label>
-            <input matInput placeholder="Enter Phone number" 
+            <input required matInput placeholder="Enter Phone number"
             name="phone"
+            type="number"
               [(ngModel)]="user.phone"
               [ngModelOptions]="{ standalone: true }"/>
           </mat-form-field>
