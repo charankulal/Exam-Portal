@@ -6,31 +6,33 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { error } from 'console';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     FormsModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
-  
-  
+
+
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
 export class SignupComponent implements OnInit{
-  constructor(private userService:UserService) {
-    
+  constructor(private userService:UserService,private snack:MatSnackBar) {
+
   }
   ngOnInit(): void {
-    
-  } 
-  
-  
+
+  }
+
+
   public user = {
     username: '',
     password: '',
@@ -41,9 +43,14 @@ export class SignupComponent implements OnInit{
   };
 
   formSubmit() {
-    
+
     if (this.user.username == '' || this.user.username == null) {
-      alert('Username is required');
+      // alert('Username is required');
+      this.snack.open("Username is required!!",'OK',{
+        duration:3000,
+        verticalPosition:'bottom',
+        horizontalPosition:'center',
+      })
       return;
     }
     console.log(this.user);
@@ -57,9 +64,12 @@ export class SignupComponent implements OnInit{
       (error)=>{
         //error
         console.log(error)
-        alert("Error")
+        // alert("Error")
+        this.snack.open('Something went wrong!!','OK',{
+          duration:3000,
+        })
       }
     )
   }
-  
+
 }
