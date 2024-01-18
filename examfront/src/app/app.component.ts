@@ -6,6 +6,8 @@ import {NavbarComponent} from './components/navbar/navbar.component'
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,10 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
+    HttpClientModule,
   ],
+  providers:[UserService,HttpClient],
+  
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
