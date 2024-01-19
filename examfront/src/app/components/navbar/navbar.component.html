@@ -1,1 +1,31 @@
-<!-- <p>This is navbar</p> -->
+<p>
+  <mat-toolbar color="primary">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+    >
+      <mat-icon>menu_book</mat-icon>
+    </button>
+    <a routerLink="/" class="nav-heading">TestiFy</a>
+    <span class="example-spacer"></span>
+    <a
+      [routerLink]="'/login'"
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon"
+    >
+      <span class="nav-btn-title">Login</span>
+      <mat-icon>login</mat-icon>
+    </a>
+    <a
+      [routerLink]="'/signup'"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <span class="nav-btn-title">Sign Up</span>
+      <mat-icon>app_registration</mat-icon>
+    </a>
+  </mat-toolbar>
+</p>

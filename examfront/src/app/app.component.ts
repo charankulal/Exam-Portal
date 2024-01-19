@@ -29,5 +29,5 @@ import { UserService } from './services/user.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Exam Portal';
+  title = 'TestiFy';
 }
