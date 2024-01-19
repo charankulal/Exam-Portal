@@ -6,14 +6,15 @@ import {NavbarComponent} from './components/navbar/navbar.component'
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
 import { UserService } from './services/user.service';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, 
+    CommonModule,
     RouterOutlet,
     MatButtonModule,
     NavbarComponent,
@@ -23,7 +24,7 @@ import { UserService } from './services/user.service';
     HttpClientModule,
   ],
   providers:[UserService,HttpClient],
-  
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

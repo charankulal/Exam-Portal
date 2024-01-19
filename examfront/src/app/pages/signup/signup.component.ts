@@ -7,7 +7,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserService } from '../../services/user.service';
 import { error } from 'console';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
-
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +19,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     HttpClientModule,
     MatSnackBarModule,
-
+    MatCardModule,
   ],
 
 

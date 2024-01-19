@@ -1,1 +1,49 @@
-<p>login works!</p>
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <div class="row login-row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card>
+        <div class="container text-center">
+          <img class="signup-img" src="../../../assets/login.png " alt="" />
+        </div>
+        <h1 class="text-center">Login Here!!</h1>
+        <form >
+          <!-- UserName Field -->
+          <mat-form-field class="full-width margin" appearance="outline">
+            <mat-label>Username</mat-label>
+            <input
+            required
+              matInput
+              placeholder="Enter Username"
+              name="username"
+
+            />
+            <mat-hint>Username should be valid</mat-hint>
+          </mat-form-field>
+          <!-- [(ngModel)]="user.username"
+          [ngModelOptions]="{ standalone: true } -->
+          <!-- Password Field-->
+          <mat-form-field class="full-width margin" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input required type="password" matInput placeholder="Enter Password"
+            name="password"
+              />
+          </mat-form-field>
+          <!-- [(ngModel)]="user.password"
+              [ngModelOptions]="{ standalone: true }"  -->
+
+          <div class="container text-center margin">
+            <button type="submit" mat-raised-button color="primary">
+              Login
+            </button>
+            <button mat-raised-button color="accent" class="margin-left" >
+              Clear
+            </button>
+          </div>
+        </form>
+      </mat-card>
+      </div>
+
+    </div>
+  </div>
+</div>

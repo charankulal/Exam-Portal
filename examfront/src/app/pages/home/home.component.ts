@@ -10,7 +10,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-home',
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -21,9 +21,9 @@ import {MatCardModule} from '@angular/material/card';
     MatSnackBarModule,
     MatCardModule,
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css'
 })
-export class LoginComponent {
+export class HomeComponent {
 
 }
