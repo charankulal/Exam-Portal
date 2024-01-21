@@ -8,6 +8,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
 import { UserService } from './services/user.service';
+import { LoginService } from './services/login.service';
 
 
 @Component({
@@ -23,7 +24,7 @@ import { UserService } from './services/user.service';
     FormsModule,
     HttpClientModule,
   ],
-  providers:[UserService,HttpClient],
+  providers:[UserService,LoginService,HttpClient],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

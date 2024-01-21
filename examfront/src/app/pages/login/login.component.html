@@ -7,7 +7,9 @@
           <img class="signup-img" src="../../../assets/login.png " alt="" />
         </div>
         <h1 class="text-center">Login Here!!</h1>
-        <form >
+        <form (ngSubmit)="formSubmit()" >
+          <!-- {{loginData.username}}
+          {{loginData.password}} -->
           <!-- UserName Field -->
           <mat-form-field class="full-width margin" appearance="outline">
             <mat-label>Username</mat-label>
@@ -16,27 +18,28 @@
               matInput
               placeholder="Enter Username"
               name="username"
-
+              [(ngModel)]="loginData.username"
+              [ngModelOptions]="{ standalone: true }"
             />
             <mat-hint>Username should be valid</mat-hint>
           </mat-form-field>
-          <!-- [(ngModel)]="user.username"
-          [ngModelOptions]="{ standalone: true } -->
-          <!-- Password Field-->
+
+          <!-- Password fiekd -->
           <mat-form-field class="full-width margin" appearance="outline">
             <mat-label>Password</mat-label>
             <input required type="password" matInput placeholder="Enter Password"
             name="password"
+            [(ngModel)]="loginData.password"
+            [ngModelOptions]="{ standalone: true }"
               />
           </mat-form-field>
-          <!-- [(ngModel)]="user.password"
-              [ngModelOptions]="{ standalone: true }"  -->
+
 
           <div class="container text-center margin">
             <button type="submit" mat-raised-button color="primary">
               Login
             </button>
-            <button mat-raised-button color="accent" class="margin-left" >
+            <button type="reset" mat-raised-button color="accent" class="margin-left" >
               Clear
             </button>
           </div>

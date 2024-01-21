@@ -32,7 +32,7 @@ public class JwtUtil {
     }
     private Claims extractAllClaims(String token) {
         return (Claims) Jwts.parser().setSigningKey(SECRET_KEY).parse(token).getBody();
-//        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+//        return Jwts.parser().setSigningKey(SECRET_KEY).parse(token).getBody();
 //                setSigningKey(SECRET_KEY).build().parseUnsecuredClaims(token);
 //                parseClaimsJws(token);
     }
@@ -49,8 +49,7 @@ public class JwtUtil {
     private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .compact();
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)).compact();
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
