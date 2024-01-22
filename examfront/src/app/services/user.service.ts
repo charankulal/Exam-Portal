@@ -10,10 +10,10 @@ import { SignupComponent } from '../pages/signup/signup.component';
 
 
 export class UserService {
-  
+
 
   constructor(private http:HttpClient) {
-    
+
    }
 
   // add user or user registration

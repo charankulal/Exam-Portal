@@ -3,12 +3,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { UserService } from '../../services/user.service';
-import { error } from 'console';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { LoginService } from '../../services/login.service';
+
 
 @Component({
   selector: 'app-login',
@@ -18,7 +16,6 @@ import { LoginService } from '../../services/login.service';
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    HttpClientModule,
     MatSnackBarModule,
     MatCardModule,
   ],
@@ -36,6 +33,7 @@ export class LoginComponent implements OnInit{
   }
 
   formSubmit(){
+
     // alert("Clicked")
     if(this.loginData.username.trim()=='' || this.loginData.username==null)
     {
@@ -57,6 +55,34 @@ export class LoginComponent implements OnInit{
     this.login.generateToken(this.loginData).subscribe(
       (data:any)=>{
         console.log(data)
+        console.log(data.token)
+        const headerDict = {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Headers': 'Content-Type',
+          'Authorization':`Bearer ${this.login.getToken()}`,
+        }
+        const requestOptions = {
+          headers: new Headers(headerDict),
+        };
+        // login
+
+
+        this.login.loginUser(data.token)
+        this.login.getCurrentUser(requestOptions).subscribe(
+          (user:any)=>{
+            this.login.setUser(user)
+            console.log(user)
+            console.log("Success")
+
+            //redirect if user is admin redirect to admin dashboard
+            //redirect if user is normal user then redirect to user dashboard
+          },
+
+        )
+
+
+
       },(error)=>{
         alert("Error occurred")
       }

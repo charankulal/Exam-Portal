@@ -6,7 +6,7 @@ import {NavbarComponent} from './components/navbar/navbar.component'
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule, withFetch } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { LoginService } from './services/login.service';
 
@@ -23,8 +23,9 @@ import { LoginService } from './services/login.service';
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
+
   ],
-  providers:[UserService,LoginService,HttpClient],
+  providers:[UserService,LoginService],
 
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

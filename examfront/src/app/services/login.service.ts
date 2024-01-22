@@ -7,9 +7,15 @@ import baseUrl from './helper';
 })
 export class LoginService {
 
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient) {  }
 
+  // get the current user logged in
+
+  public getCurrentUser(requestHeader:any)
+  {
+    return this.http.get(`${baseUrl}/current-user`,requestHeader)
   }
+
   //generate token
 
   public generateToken(loginData:any)
@@ -50,6 +56,7 @@ export class LoginService {
   //to get token
   public getToken()
   {
+    console.log("Inside get Token function")
     return localStorage.getItem('token')
   }
 
@@ -83,3 +90,4 @@ export class LoginService {
     return user.authorities[0].authority
   }
 }
+
