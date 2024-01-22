@@ -56,11 +56,12 @@ export class LoginComponent implements OnInit{
       (data:any)=>{
         console.log(data)
         console.log(data.token)
+        let token=data.token
         const headerDict = {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
           'Access-Control-Allow-Headers': 'Content-Type',
-          'Authorization':`Bearer ${this.login.getToken()}`,
+          'Authorization':`Bearer ${token}`,
         }
         const requestOptions = {
           headers: new Headers(headerDict),
@@ -68,7 +69,7 @@ export class LoginComponent implements OnInit{
         // login
 
 
-        this.login.loginUser(data.token)
+        this.login.loginUser(token)
         this.login.getCurrentUser(requestOptions).subscribe(
           (user:any)=>{
             this.login.setUser(user)
