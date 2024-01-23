@@ -10,6 +10,7 @@
     <a routerLink="/" class="nav-heading">TestiFy</a>
     <span class="example-spacer"></span>
     <a
+    *ngIf="!login.isLoggedIn()"
       [routerLink]="'/login'"
       mat-icon-button
       class="example-icon favorite-icon"
@@ -19,6 +20,7 @@
       <mat-icon>login</mat-icon>
     </a>
     <a
+    *ngIf="!login.isLoggedIn"
       [routerLink]="'/signup'"
       mat-icon-button
       class="example-icon"
@@ -27,5 +29,15 @@
       <span class="nav-btn-title">Sign Up</span>
       <mat-icon>app_registration</mat-icon>
     </a>
+    <a
+    *ngIf="!login.isLoggedIn"
+      [routerLink]="'/signup'"
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon"
+    >
+      <span class="nav-btn-title">LogOut</span>
+    </a>
+
   </mat-toolbar>
 </p>

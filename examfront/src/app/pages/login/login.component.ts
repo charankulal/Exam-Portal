@@ -7,7 +7,6 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
 import { LoginService } from '../../services/login.service';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -18,6 +17,7 @@ import { LoginService } from '../../services/login.service';
     FormsModule,
     MatSnackBarModule,
     MatCardModule,
+
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -75,9 +75,25 @@ export class LoginComponent implements OnInit{
             this.login.setUser(user)
             console.log(user)
             console.log("Success")
-
             //redirect if user is admin redirect to admin dashboard
             //redirect if user is normal user then redirect to user dashboard
+
+            if(this.login.getUserRole()=="ADMIN")
+            {
+              // route to admin dashboard
+              window.location.href='/admin'
+            }
+            else if(this.login.getUserRole()=="NORMAL")
+            {
+              // route to users dashboard
+              window.location.href='/user-dashboard'
+            }
+            else
+            {
+              // If user is neither admin nor user then logout
+              this.login.logout()
+            }
+
           },
 
         )
@@ -85,7 +101,11 @@ export class LoginComponent implements OnInit{
 
 
       },(error)=>{
-        alert("Error occurred")
+        // alert("Error occurred")
+        this.snack.open("Invalid Credentials!! Try Again",'OK',{
+          duration:3000,
+          verticalPosition:'bottom',
+          horizontalPosition:'center',})
       }
     )
 

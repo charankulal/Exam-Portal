@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import {MatButtonModule} from '@angular/material/button';
 import {NavbarComponent} from './components/navbar/navbar.component'
@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './services/user.service';
 import { LoginService } from './services/login.service';
-
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,8 @@ import { LoginService } from './services/login.service';
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-
+    NgIf,
+    AsyncPipe
   ],
   providers:[UserService,LoginService],
 
