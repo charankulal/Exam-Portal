@@ -3,7 +3,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { LoginService } from '../../services/login.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 
 
 
@@ -14,7 +14,8 @@ import { AsyncPipe } from '@angular/common';
     MatToolbarModule,
     MatIconModule,
     RouterLink,
-    AsyncPipe
+    AsyncPipe,
+    NgIf,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'

@@ -22,8 +22,6 @@ import { LoginService } from './services/login.service';
     MatFormFieldModule,
     FormsModule,
     HttpClientModule,
-    NgIf,
-    AsyncPipe
   ],
   providers:[UserService,LoginService],
 

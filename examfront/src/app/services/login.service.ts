@@ -27,14 +27,14 @@ export class LoginService {
 
   public loginUser(token:any)
   {
-    window.localStorage.setItem('token',token)
+    localStorage.setItem('token',token)
     return true;
   }
 
   // TO check whether use is  loggedin or not
   public isLoggedIn()
   {
-    let tokenString= window.localStorage.getItem('token')
+    let tokenString= window.localStorage.getItem('user')
     console.log("User logged in",tokenString)
     if(tokenString== undefined || tokenString==''|| tokenString==null)
     {

@@ -3,7 +3,6 @@
     <button
       mat-icon-button
       class="example-icon"
-      aria-label="Example icon-button with menu icon"
     >
       <mat-icon>menu_book</mat-icon>
     </button>
@@ -14,27 +13,32 @@
       [routerLink]="'/login'"
       mat-icon-button
       class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon"
     >
       <span class="nav-btn-title">Login</span>
-      <mat-icon>login</mat-icon>
     </a>
     <a
-    *ngIf="!login.isLoggedIn"
+    *ngIf="!login.isLoggedIn()"
       [routerLink]="'/signup'"
       mat-icon-button
       class="example-icon"
-      aria-label="Example icon-button with share icon"
     >
       <span class="nav-btn-title">Sign Up</span>
-      <mat-icon>app_registration</mat-icon>
     </a>
     <a
-    *ngIf="!login.isLoggedIn"
-      [routerLink]="'/signup'"
+    *ngIf="login.isLoggedIn()"
+    (click)="login.logout()"
+      [routerLink]="''"
       mat-icon-button
       class="example-icon"
-      aria-label="Example icon-button with share icon"
+    >
+      <span class="nav-btn-title">{{login.getUser().username}}</span>
+    </a>
+    <a
+    *ngIf="login.isLoggedIn()"
+    (click)="login.logout()"
+      [routerLink]="''"
+      mat-icon-button
+      class="example-icon"
     >
       <span class="nav-btn-title">LogOut</span>
     </a>
