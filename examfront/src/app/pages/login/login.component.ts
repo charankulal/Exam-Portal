@@ -83,12 +83,14 @@ export class LoginComponent implements OnInit{
               // route to admin dashboard
               // window.location.href='/admin'
               this.router.navigate(['/admin'])
+              this.login.loginStatusSubject.next(true)
             }
             else if(this.login.getUserRole()=="NORMAL")
             {
               // route to users dashboard
               // window.location.href='/user-dashboard'
               this.router.navigate(['/user-dashboard'])
+              this.login.loginStatusSubject.next(true)
             }
             else
             {

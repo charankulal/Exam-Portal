@@ -26,7 +26,6 @@
     </a>
     <a
     *ngIf="login.isLoggedIn()"
-    (click)="login.logout()"
       [routerLink]="''"
       mat-icon-button
       class="example-icon"
@@ -35,7 +34,7 @@
     </a>
     <a
     *ngIf="login.isLoggedIn()"
-    (click)="login.logout()"
+    (click)="logout()"
       [routerLink]="''"
       mat-icon-button
       class="example-icon"

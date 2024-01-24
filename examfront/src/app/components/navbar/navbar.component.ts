@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -20,16 +20,18 @@ import { AsyncPipe, NgIf } from '@angular/common';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
-  constructor(public login:LoginService,private router:Router)
-  {
+export class NavbarComponent implements OnInit {
 
-  }
-  public logOut()
-  {
-    this.login.logout()
-    // window.location.reload()
-    this.router.navigate(['/login'])
-  }
+
+  constructor(public login:LoginService,private router:Router)  {  }
+
+ngOnInit(): void {
+}
+
+public logout()
+{
+  this.login.logout()
+  window.location.reload()
+}
 
 }
