@@ -26,7 +26,7 @@
     </a>
     <a
     *ngIf="login.isLoggedIn()"
-      [routerLink]="''"
+      [routerLink]="['/admin/profile']"
       mat-icon-button
       class="example-icon"
     >
@@ -39,7 +39,7 @@
       mat-icon-button
       class="example-icon"
     >
-      <span class="nav-btn-title">LogOut</span>
+      <span class="nav-btn-title">Logout</span>
     </a>
 
   </mat-toolbar>

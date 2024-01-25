@@ -1,1 +1,50 @@
-<h1>This is the profile page</h1>
+<mat-card *ngIf="user">
+<mat-card-content>
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="container text-center ">
+        <img src="../../../assets/{{user.profile}}" alt="" class="profile-img">
+
+        <h1 class="username">Hii.. {{user.firstName}} {{user.lastName}} !!</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-10 offest-md-1 text-center">
+          <!-- {{user | json}} -->
+          <!-- details table -->
+          <table class="table text-center">
+            <tr>
+              <td>Username</td>
+              <td>{{user.username}}</td>
+            </tr>
+            <tr>
+              <td>User Id</td>
+              <td>EXAM{{user.id}}</td>
+            </tr>
+            <tr>
+              <td>Phone</td>
+              <td>{{user.phone}}</td>
+            </tr>
+            <tr>
+              <td>Role</td>
+              <td>{{user.authorities[0].authority}}</td>
+            </tr>
+
+            <tr>
+              <td>Status</td>
+              <td>{{user.enabled?"ACTIVE":"NOT ACTIVE"}}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card-content>
+
+  <mat-card-actions class="action-buttons" >
+    <button mat-raised-button color="primary">Update</button>
+    <button mat-raised-button color="accent">Delete</button>
+  </mat-card-actions>
+
+</mat-card>
+

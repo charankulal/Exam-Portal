@@ -7,8 +7,8 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { adminGuard } from './services/admin.guard';
 import { normalGuard } from './services/normal.guard';
 import { loginguardGuard } from './services/loginguard.guard';
-import path from 'path';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +34,7 @@ export const routes: Routes = [
     canActivate: [adminGuard],
 
     children: [
+      { path: '', component: WelcomeComponent, },
       { path: 'profile', component: ProfileComponent, },
     ],
   },

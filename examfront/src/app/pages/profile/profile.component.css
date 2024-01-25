@@ -1,0 +1,29 @@
+.profile-img{
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid rgb(91, 115, 129);
+  border-radius: 60%;
+}
+.username{
+  margin-top: 1rem;
+}
+
+.table{
+  width: 100%;
+  margin-left: 10%;
+  border: 0.5px solid rgb(93, 109, 118) ;
+  border-collapse: collapse;
+}
+.table tr td{
+  padding: 15px 10px;
+  border: 1px solid rgb(91, 115, 129) ;
+}
+
+.action-buttons{
+  margin-left: 37%;
+
+}
+.action-buttons button{
+  margin-right: 9%;
+
+}
