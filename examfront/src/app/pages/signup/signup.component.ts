@@ -112,7 +112,7 @@ export class SignupComponent implements OnInit{
         //error
         console.log(error)
         // alert("Error")
-        this.snack.open('Something went wrong!!','OK',{
+        this.snack.open('Username is aleady exist..Try with another!!','OK',{
           duration:3000,
         })
       }

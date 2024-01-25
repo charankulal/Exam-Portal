@@ -7,37 +7,40 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { adminGuard } from './services/admin.guard';
 import { normalGuard } from './services/normal.guard';
 import { loginguardGuard } from './services/loginguard.guard';
+import path from 'path';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'signup',
+    component: SignupComponent,
+    pathMatch: 'full',
+    canActivate: [loginguardGuard],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    pathMatch: 'full',
+    canActivate: [loginguardGuard],
+  },
+  {
+    path: 'admin',
+    component: DashboardComponent,
+    canActivate: [adminGuard],
 
-    {
-        path:'',
-        component:HomeComponent,
-        pathMatch:"full",
-    },
-    {
-        path:'signup',
-        component:SignupComponent,
-        pathMatch:"full",
-        canActivate:[loginguardGuard]
-    },
-    {
-        path:'login',
-        component:LoginComponent,
-        pathMatch:"full",
-        canActivate:[loginguardGuard]
-    },
-    {
-        path:'admin',
-        component:DashboardComponent,
-        pathMatch:"full",
-        canActivate:[adminGuard],
-    },
-    {
-        path:'user-dashboard',
-        component:UserDashboardComponent,
-        pathMatch:"full",
-        canActivate:[normalGuard],
-    },
-
+    children: [
+      { path: 'profile', component: ProfileComponent, },
+    ],
+  },
+  {
+    path: 'user-dashboard',
+    component: UserDashboardComponent,
+    pathMatch: 'full',
+    canActivate: [normalGuard],
+  },
 ];
