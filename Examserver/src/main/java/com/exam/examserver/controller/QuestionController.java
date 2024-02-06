@@ -55,6 +55,7 @@ public class QuestionController {
         return ResponseEntity.ok(list);
     }
 
+
     // get single question
 
     @GetMapping("/{quesId}")
