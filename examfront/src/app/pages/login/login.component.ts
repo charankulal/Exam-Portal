@@ -54,8 +54,8 @@ export class LoginComponent implements OnInit{
     // request to server to generate token
     this.login.generateToken(this.loginData).subscribe(
       (data:any)=>{
-        console.log(data)
-        console.log(data.token)
+        // console.log(data)
+        // console.log(data.token)
         let token=data.token
         const headerDict = {
           'Content-Type': 'application/json',
@@ -73,8 +73,8 @@ export class LoginComponent implements OnInit{
         this.login.getCurrentUser(requestOptions).subscribe(
           (user:any)=>{
             this.login.setUser(user)
-            console.log(user)
-            console.log("Success")
+            // console.log(user)
+            // console.log("Success")
             //redirect if user is admin redirect to admin dashboard
             //redirect if user is normal user then redirect to user dashboard
 

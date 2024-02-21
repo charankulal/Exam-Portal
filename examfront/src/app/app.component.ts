@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { Component } from '@angular/core';
 import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -24,6 +25,7 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     HttpClientModule,
     MatListModule,
+    MatDividerModule
   ],
   providers: [UserService, LoginService],
 

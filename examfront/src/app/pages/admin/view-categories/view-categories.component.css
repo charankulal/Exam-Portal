@@ -1,0 +1,12 @@
+.cat-list {
+  display: flex;
+}
+
+mat-list-item {
+  margin-top: 20px;
+padding: 25px;
+}
+
+mat-card{
+  padding-bottom: 20px;
+}

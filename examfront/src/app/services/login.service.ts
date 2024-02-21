@@ -31,7 +31,7 @@ export class LoginService {
   public loginUser(token:any)
   {
     localStorage.setItem('token',token)
-    
+
     return true;
   }
 
@@ -39,7 +39,7 @@ export class LoginService {
   public isLoggedIn()
   {
     let tokenString= window.localStorage.getItem('user')
-    console.log("User logged in",tokenString)
+    // console.log("User logged in",tokenString)
     if(tokenString== undefined || tokenString==''|| tokenString==null)
     {
       return false
@@ -60,7 +60,7 @@ export class LoginService {
   //to get token
   public getToken()
   {
-    console.log("Inside get Token function")
+    // console.log("Inside get Token function")
     return window.localStorage.getItem('token')
   }
 
@@ -75,7 +75,7 @@ export class LoginService {
   public getUser()
   {
     let userString=window.localStorage.getItem('user')
-    console.log(userString)
+    // console.log(userString)
     if(userString!=null)
     {
       return JSON.parse(userString)
