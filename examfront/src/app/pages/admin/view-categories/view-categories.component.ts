@@ -34,16 +34,7 @@ export class ViewCategoriesComponent {
       title: 'Programming',
       description: 'This is testing categories',
     },
-    {
-      cid: 23,
-      title: 'GK',
-      description: 'This is testing categories',
-    },
-    {
-      cid: 23,
-      title: 'Core JAVA',
-      description: 'This is testing categories',
-    },
+    
   ];
   constructor(private _category: CategoryService) {}
   ngOnInit(): void {
