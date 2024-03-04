@@ -12,4 +12,10 @@ export class CategoryService {
 
     return  this.http.get(`${baseUrl}/category/`,requestHeader)
   }
+
+  // Add new category
+
+  public addCategory(category: any,requestHeader:any ){
+return this.http.post(`${baseUrl}/category/`,category,requestHeader)
+  }
 }

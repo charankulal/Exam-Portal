@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CategoryService } from '../../../services/category.service';
 import { error } from 'console';
 import Swal from 'sweetalert2';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ import Swal from 'sweetalert2';
     MatDividerModule,
     MatLineModule,
     MatButtonModule,
-
+    RouterLink
   ],
   templateUrl: './view-categories.component.html',
   styleUrl: './view-categories.component.css',
@@ -34,7 +35,7 @@ export class ViewCategoriesComponent {
       title: 'Programming',
       description: 'This is testing categories',
     },
-    
+
   ];
   constructor(private _category: CategoryService) {}
   ngOnInit(): void {
