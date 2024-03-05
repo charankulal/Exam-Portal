@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
 
 export const routes: Routes = [
   {
@@ -36,10 +37,14 @@ export const routes: Routes = [
     canActivate: [adminGuard],
 
     children: [
-      { path: '', component: WelcomeComponent, },
-      { path: 'profile', component: ProfileComponent, },
-      {path:'categories', component:ViewCategoriesComponent},
-      {path:'add-category',component: AddCategoryComponent},
+      { path: '', component: WelcomeComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'categories', component: ViewCategoriesComponent },
+      { path: 'add-category', component: AddCategoryComponent },
+      {
+        path: 'quizzes',
+        component: ViewQuizzesComponent,
+      },
     ],
   },
   {
