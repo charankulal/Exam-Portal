@@ -7,6 +7,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterLink } from '@angular/router';
+import { QuizService } from '../../../services/quiz.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-view-quizzes',
@@ -50,4 +52,26 @@ export class ViewQuizzesComponent {
       },
     },
   ];
+
+  constructor(private _quiz: QuizService) {}
+
+  ngOnInit(): void {
+    let token = localStorage.getItem('token');
+    console.log(token);
+    const headerDict = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      Authorization: `Bearer ${token}`,
+    };
+    const requestOptions = {
+      headers: new Headers(headerDict),
+    };
+
+    this._quiz.quizzes(requestOptions).subscribe((data: any) => {
+      this.quizzes = data;
+    }, (error)=>{
+      console.log("Internal Server Error")
+    });
+  }
 }
