@@ -68,10 +68,13 @@ export class ViewQuizzesComponent {
       headers: new Headers(headerDict),
     };
 
-    this._quiz.quizzes(requestOptions).subscribe((data: any) => {
-      this.quizzes = data;
-    }, (error)=>{
-      console.log("Internal Server Error")
-    });
+    this._quiz.quizzes(requestOptions).subscribe(
+      (data: any) => {
+        this.quizzes = data;
+      },
+      (error) => {
+        console.log('Internal Server Error');
+      }
+    );
   }
 }
