@@ -1,17 +1,18 @@
 import { Routes } from '@angular/router';
-import { SignupComponent } from './pages/signup/signup.component';
-import { LoginComponent } from './pages/login/login.component';
-import { HomeComponent } from './pages/home/home.component';
+import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { DashboardComponent } from './pages/admin/dashboard/dashboard.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { HomeComponent } from './pages/home/home.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { adminGuard } from './services/admin.guard';
-import { normalGuard } from './services/normal.guard';
 import { loginguardGuard } from './services/loginguard.guard';
-import { ProfileComponent } from './pages/profile/profile.component';
-import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
-import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+import { normalGuard } from './services/normal.guard';
 
 export const routes: Routes = [
   {
@@ -44,6 +45,10 @@ export const routes: Routes = [
       {
         path: 'quizzes',
         component: ViewQuizzesComponent,
+      },
+      {
+        path:'add-quiz',
+        component:AddQuizComponent,
       },
     ],
   },

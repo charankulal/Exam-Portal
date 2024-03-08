@@ -5,8 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { CategoryService } from '../services/category.service';
-import { error } from 'console';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-add-category',
@@ -33,7 +32,7 @@ export class AddCategoryComponent {
   {
     let token= localStorage.getItem('token')
     const headerDict = {
-      
+
 
       'Access-Control-Allow-Headers': 'Content-Type',
       'Authorization':`Bearer ${token}`,
