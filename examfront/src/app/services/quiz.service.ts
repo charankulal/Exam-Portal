@@ -11,4 +11,10 @@ export class QuizService {
   public quizzes(requestHeader: any) {
     return this._http.get(`${baseUrl}/quiz/`, requestHeader);
   }
+
+  // add quiz function
+
+  public addQuizzes(requestHeader: any, quizData: any) {
+    return this._http.post(`${baseUrl}/quiz/`, quizData, requestHeader);
+  }
 }
