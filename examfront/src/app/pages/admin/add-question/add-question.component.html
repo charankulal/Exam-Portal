@@ -1,0 +1,63 @@
+<div class="bootstrap-wrapperr">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Adding Question</h1>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-subtitle>
+            Enter the details for the new question
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form>
+            <!-- content field  -->
+
+            <mat-form-field class="w100">
+              <mat-label> Write Question content </mat-label>
+              <textarea
+                name="content"
+                matInput
+                placeholder="Write Question content"
+              ></textarea>
+            </mat-form-field>
+
+            <!-- form fields for options -->
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Option 1 -->
+                <mat-form-field class="w100">
+                  <mat-label>Enter Option 1</mat-label>
+                  <input type="text" matInput placeholder="Option 1"/>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!-- Option 2 -->
+                <mat-form-field class="w100">
+                  <mat-label>Enter Option 2</mat-label>
+                  <input type="text" matInput placeholder="Option 2"/>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Option 3 -->
+                <mat-form-field class="w100">
+                  <mat-label>Enter Option 3</mat-label>
+                  <input type="text" matInput placeholder="Option 3"/>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <!-- Option 4 -->
+                <mat-form-field class="w100" appearance="fill">
+                  <mat-label>Enter Option 4</mat-label>
+                  <input type="text" matInput placeholder="Option 4" />
+                </mat-form-field>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

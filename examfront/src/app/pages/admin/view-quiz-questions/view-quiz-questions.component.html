@@ -1,6 +1,18 @@
+<h1>Questions of {{ qTitle }}</h1>
+
 <div class="bootstrap-wrapper">
   <div class="row">
     <div class="col-md-12">
+      <div class="container">
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="'/admin/add-question/'+ qId"
+        >
+          Add Question
+        </button>
+      </div>
+
       <mat-card *ngFor="let q of questions; let i = index" class="margin">
         <mat-card-content>
           <p>Q{{ i + 1 }}) <span [innerHTML]="q.content"></span></p>
