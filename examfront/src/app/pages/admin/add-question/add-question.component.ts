@@ -53,11 +53,14 @@ export class AddQuestionComponent {
   };
 
   qId: any;
+  qTitle:any;
   constructor(private _route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.qId = this._route.snapshot.params['qid'];
+    this.qTitle = this._route.snapshot.params['title'];
     // alert(this.qId);
     this.question.quiz.qid = this.qId;
+    // this.question.quiz.qid = this.qId;
   }
 }
