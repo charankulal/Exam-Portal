@@ -1,0 +1,35 @@
+<div class="bootstrap-wrapper">
+  <div class="row">
+    <div class="col-md-12">
+      <mat-card *ngFor="let q of questions; let i = index" class="margin">
+        <mat-card-content>
+          <p>Q{{ i + 1 }}) <span [innerHTML]="q.content"></span></p>
+
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <p><b>A.</b> {{ q.option1 }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><b>B.</b> {{ q.option2 }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><b>C.</b> {{ q.option3 }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><b>D.</b> {{ q.option4 }}</p>
+              </div>
+            </div>
+            <mat-divider>
+
+            </mat-divider>
+            <p class="margin-ans"><b>Correct Answer: {{ q.answer }} </b>  </p>
+
+          </div>
+
+        </mat-card-content>
+
+      </mat-card>
+    </div>
+  </div>
+</div>

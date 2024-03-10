@@ -9,7 +9,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
-import { error } from 'console';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-view-quizzes',

@@ -14,6 +14,7 @@ import { adminGuard } from './services/admin.guard';
 import { loginguardGuard } from './services/loginguard.guard';
 import { normalGuard } from './services/normal.guard';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 
 export const routes: Routes = [
   {
@@ -54,6 +55,10 @@ export const routes: Routes = [
       {
         path: 'quiz/:qid',
         component: UpdateQuizComponent,
+      },
+      {
+        path: 'view-questions/:qid/:title',
+        component: ViewQuizQuestionsComponent,
       },
     ],
   },
