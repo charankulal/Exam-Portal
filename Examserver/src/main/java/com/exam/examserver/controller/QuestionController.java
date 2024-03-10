@@ -38,7 +38,7 @@ public class QuestionController {
         return ResponseEntity.ok(this.questionService.updateQuestion(question));
     }
 
-    //get questions of any quiz
+    //get predefined number of questions of any quiz
     @GetMapping("/quiz/{qid}")
     public ResponseEntity<?> getQuestionsOfQuiz(@PathVariable("qid") Long qid)
     {
@@ -53,6 +53,16 @@ public class QuestionController {
         }
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
+    }
+
+    //get all questions of any quiz
+    @GetMapping("/quiz/all/{qid}")
+    public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid)
+    {
+        Quiz quiz= new Quiz();
+        quiz.setQid(qid);
+        Set<Question> questionsOfQuiz= this.questionService.getQuestionsOfQuiz(quiz);
+        return ResponseEntity.ok(questionsOfQuiz);
     }
 
 
