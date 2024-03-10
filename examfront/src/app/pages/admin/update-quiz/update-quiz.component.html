@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
-        <form  >
+        <form (ngSubmit)="updateQuiz()" >
           <!-- title field -->
           <mat-form-field class="w-100" appearance="fill">
             <mat-label>Enter Title</mat-label>
@@ -84,7 +84,7 @@
               [(ngModel)]="quiz.category.cid"
               [ngModelOptions]="{ standalone: true }"
             >
-              <mat-option *ngFor="let c of categories" [value]="c">{{
+              <mat-option *ngFor="let c of categories" [value]="c.cid">{{
                 c.title
               }}</mat-option>
             </mat-select>

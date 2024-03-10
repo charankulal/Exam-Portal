@@ -30,4 +30,11 @@ export class QuizService {
   {
     return this._http.get(`${baseUrl}/quiz/${qid}`,requestHeader)
   }
+
+  // update the quiz by id
+
+  public updateQuiz(quiz:any, requestHeader:any)
+  {
+    return this._http.put(`${baseUrl}/quiz/`,quiz,requestHeader)
+  }
 }
