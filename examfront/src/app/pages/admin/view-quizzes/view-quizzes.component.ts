@@ -1,3 +1,4 @@
+import { QuizService } from './../../../services/quiz.service';
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -6,10 +7,10 @@ import { MatLineModule } from '@angular/material/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
-import { QuizService } from '../../../services/quiz.service';
 import { error } from 'console';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-view-quizzes',
   standalone: true,
@@ -29,31 +30,20 @@ import { error } from 'console';
 export class ViewQuizzesComponent {
   quizzes = [
     {
-      qId: 23,
-      title: 'Basic Java Quiz',
-      description: 'This is java quiz',
-      maxMarks: '50',
-      numberOfQuestions: '20',
+      qid: '',
+      title: '',
+      description: '',
+      maxMarks: '',
+      numberOfQuestions: '',
       active: '',
 
       category: {
-        title: 'Programming',
-      },
-    },
-    {
-      qId: 24,
-      title: 'Basic Python Quiz',
-      description: 'This is Python quiz',
-      maxMarks: '50',
-      numberOfQuestions: '20',
-      active: '',
-      category: {
-        title: 'Programming',
+        title: '',
       },
     },
   ];
 
-  constructor(private _quiz: QuizService) {}
+  constructor(private _quiz: QuizService, private _snack: MatSnackBar) {}
 
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -73,8 +63,52 @@ export class ViewQuizzesComponent {
         this.quizzes = data;
       },
       (error) => {
-        console.log('Internal Server Error');
+        // console.log('Internal Server Error');
+        this._snack.open('Internal Server Error', '', {
+          duration: 3000,
+        });
       }
     );
+  }
+
+  // deleting the quiz using quiz id
+
+  deleteQuiz(qId: any) {
+    // console.log(qId)
+    // Header options
+    let token = localStorage.getItem('token');
+    console.log(token);
+    const headerDict = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      Authorization: `Bearer ${token}`,
+    };
+    const requestOptions = {
+      headers: new Headers(headerDict),
+    };
+
+    Swal.fire({
+      icon: 'info',
+      title: 'Are you sure?',
+      confirmButtonText: 'Delete',
+      showCancelButton: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this._quiz.deleteQuiz(requestOptions, qId).subscribe(
+          (data: any) => {
+            this.quizzes = this.quizzes.filter((quiz) => quiz.qid != qId);
+            this._snack.open('Quiz deleted successfully!!', '', {
+              duration: 3000,
+            });
+          },
+          (error) => {
+            this._snack.open('Internal Server Error!!', '', {
+              duration: 3000,
+            });
+          }
+        );
+      }
+    });
   }
 }

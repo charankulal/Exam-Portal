@@ -23,11 +23,19 @@
     </button>
     <button mat-flat-button color="accent" class="btn">Update</button>
     <button mat-flat-button color="accent" class="btn">Attempts</button>
+    <button
+      mat-flat-button
+      color="warn"
+      class="btn"
+      (click)="deleteQuiz(q.qid)"
+    >
+      Delete
+    </button>
   </div>
 </mat-card>
 
 <div class="container text-center">
-
-  <button routerLink="/admin/add-quiz" mat-raised-button color="primary">Add New Quiz</button>
-
+  <button routerLink="/admin/add-quiz" mat-raised-button color="primary">
+    Add New Quiz
+  </button>
 </div>
