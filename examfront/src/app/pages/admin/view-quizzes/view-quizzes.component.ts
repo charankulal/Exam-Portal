@@ -1,5 +1,5 @@
 import { QuizService } from './../../../services/quiz.service';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,6 +23,8 @@ import Swal from 'sweetalert2';
     MatLineModule,
     MatButtonModule,
     RouterLink,
+    NgIf,
+    NgClass
   ],
   templateUrl: './view-quizzes.component.html',
   styleUrl: './view-quizzes.component.css',

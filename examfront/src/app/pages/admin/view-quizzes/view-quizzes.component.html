@@ -1,4 +1,4 @@
-<mat-card class="my-5" *ngFor="let q of quizzes" style="margin-bottom: 1%">
+<mat-card class="my-5"   *ngFor="let q of quizzes" [ngClass]="q.active ? 'active' : 'aactive'" style="margin-bottom: 1%;">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>
@@ -20,6 +20,13 @@
     </button>
     <button mat-stroked-button color="accent" class="btn">
       Questions: {{ q.numberOfQuestions }}
+    </button>
+    <button
+      mat-flat-button
+      color="accent"
+      class="btn"
+    >
+      {{q.active?"Active":"Inactive"}}
     </button>
     <button
       mat-flat-button
