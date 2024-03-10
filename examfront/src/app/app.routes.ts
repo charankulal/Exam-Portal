@@ -13,6 +13,7 @@ import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboa
 import { adminGuard } from './services/admin.guard';
 import { loginguardGuard } from './services/loginguard.guard';
 import { normalGuard } from './services/normal.guard';
+import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 
 export const routes: Routes = [
   {
@@ -47,8 +48,12 @@ export const routes: Routes = [
         component: ViewQuizzesComponent,
       },
       {
-        path:'add-quiz',
-        component:AddQuizComponent,
+        path: 'add-quiz',
+        component: AddQuizComponent,
+      },
+      {
+        path: 'quiz/:qid',
+        component: UpdateQuizComponent,
       },
     ],
   },

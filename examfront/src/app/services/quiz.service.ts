@@ -24,4 +24,10 @@ export class QuizService {
   {
     return this._http.delete(`${baseUrl}/quiz/${qid}`,requestHeader)
   }
+
+  // get a single quiz using id
+  public getQuiz(requestHeader: any, qid: any)
+  {
+    return this._http.get(`${baseUrl}/quiz/${qid}`,requestHeader)
+  }
 }
