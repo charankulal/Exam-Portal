@@ -9,3 +9,7 @@
 mat-card{
   background-color: rgb(205, 226, 245);
 }
+
+.mx-2{
+  margin: 0% 2%;
+}
