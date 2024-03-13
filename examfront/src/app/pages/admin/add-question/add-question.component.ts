@@ -14,7 +14,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import Swal from 'sweetalert2';
-import { error } from 'console';
 
 @Component({
   selector: 'app-add-question',
@@ -37,11 +36,14 @@ import { error } from 'console';
     ReactiveFormsModule,
     JsonPipe,
     NgIf,
+
+
   ],
   templateUrl: './add-question.component.html',
   styleUrl: './add-question.component.css',
 })
 export class AddQuestionComponent {
+
   question = {
     quesId: '',
     content: '',

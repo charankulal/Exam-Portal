@@ -5,13 +5,16 @@
       <mat-icon mat-list-icon>home</mat-icon><span class="home">Home</span>
     </a>
     <a mat-list-item [routerLink]="['/admin/profile']">
-      <mat-icon mat-list-icon>account_circle</mat-icon><span class="home">Profile</span>
+      <mat-icon mat-list-icon>account_circle</mat-icon
+      ><span class="home">Profile</span>
     </a>
     <a mat-list-item [routerLink]="['/admin/categories']">
-      <mat-icon mat-list-icon>list</mat-icon><span class="home">Categories</span>
+      <mat-icon mat-list-icon>list</mat-icon
+      ><span class="home">Categories</span>
     </a>
     <a mat-list-item [routerLink]="['/admin/add-category']">
-      <mat-icon mat-list-icon>add_circle_outline</mat-icon><span class="home">Add Category</span>
+      <mat-icon mat-list-icon>add_circle_outline</mat-icon
+      ><span class="home">Add Category</span>
     </a>
     <a mat-list-item [routerLink]="['/admin/quizzes']">
       <mat-icon mat-list-icon>quiz</mat-icon><span class="home">Quizzes</span>
@@ -20,7 +23,13 @@
     <a mat-list-item [routerLink]="['/admin/add-quiz']">
       <mat-icon mat-list-icon>add</mat-icon><span class="home">Add Quiz</span>
     </a>
-    <a mat-list-item [routerLink]="['/admin/profile']">
+    <a
+      mat-list-item
+      (click)="logout()"
+      [routerLink]="''"
+      mat-icon-button
+      class="example-icon"
+    >
       <mat-icon mat-list-icon>logout</mat-icon><span class="home">Logout</span>
     </a>
   </mat-action-list>
