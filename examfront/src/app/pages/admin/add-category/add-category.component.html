@@ -15,7 +15,8 @@
                 required
                 matInput
                 placeholder="Enter the title"
-                
+                [(ngModel)]="category.title"
+                [ngModelOptions]="{ standalone: true }"
               />
             </mat-form-field>
             <mat-form-field class="w100" appearance="outline">
@@ -39,3 +40,4 @@
     </div>
   </mat-card-content>
 </mat-card>
+<!-- {{ category | json }} -->

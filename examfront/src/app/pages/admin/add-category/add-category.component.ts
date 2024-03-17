@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CategoryService } from '../../../services/category.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-add-category',
@@ -17,6 +18,7 @@ import { CategoryService } from '../../../services/category.service';
     MatButtonModule,
     FormsModule,
     MatSnackBarModule,
+    JsonPipe
   ],
   templateUrl: './add-category.component.html',
   styleUrl: './add-category.component.css',

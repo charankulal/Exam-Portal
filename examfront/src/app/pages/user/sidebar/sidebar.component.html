@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<mat-card>
+  <mat-action-list>
+    <div mat-subheader>Menu</div>
+    <a mat-list-item [routerLink]="['/user-dashboard/']">
+      <mat-icon mat-list-icon>home</mat-icon><span class="home">Home</span>
+    </a>
+    <button mat-list-item >
+      <mat-icon mat-list-icon>quiz</mat-icon
+      ><span class="home">All Quizzes</span>
+      </button>
+    <button mat-list-item *ngFor="let c of categories">
+      <mat-icon mat-list-icon>quiz</mat-icon
+      ><span class="home">{{c.title}}</span>
+      </button>
+
+  </mat-action-list>
+</mat-card>
+
+<!-- {{categories| json}} -->
