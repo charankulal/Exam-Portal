@@ -30,7 +30,7 @@
       mat-icon-button
       class="example-icon"
     >
-      <span class="nav-btn-title">{{login.getUser().username}}</span>
+      <span class="nav-btn-title">{{login.getUser().firstName}} {{login.getUser().lastName}}</span>
     </a>
     <a
     *ngIf="login.isLoggedIn()"

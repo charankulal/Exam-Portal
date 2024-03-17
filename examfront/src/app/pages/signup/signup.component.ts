@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -24,7 +25,7 @@ import {MatCardModule} from '@angular/material/card';
   styleUrl: './signup.component.css',
 })
 export class SignupComponent implements OnInit{
-  constructor(private userService:UserService,private snack:MatSnackBar) {
+  constructor(private userService:UserService,private snack:MatSnackBar,private router: Router) {
 
   }
   ngOnInit(): void {
@@ -117,6 +118,9 @@ export class SignupComponent implements OnInit{
         })
       }
     )
+
+    this.router.navigate(['/login'])
+
   }
 
 }
