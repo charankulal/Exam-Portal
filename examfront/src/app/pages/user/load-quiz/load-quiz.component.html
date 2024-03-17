@@ -1,7 +1,7 @@
 <div class="bootstrap-wrapper">
   <div class="container-fluid">
     <h1>Available Quizzes</h1>
-    <div class="row margin">
+    <div class="row margin " *ngIf="quizzes.length>0">
       <div class="col-md-6" *ngFor="let q of quizzes">
         <mat-card>
           <mat-card-header>
@@ -19,8 +19,9 @@
           <mat-card-content>
             <p class="truncate">{{q.description}}</p>
           </mat-card-content>
+
           <mat-card-actions>
-              <div class="container text-center">
+              <div class="container text-center buttons">
                 <button mat-raised-button color="primary" class="btn">View</button>
               <button mat-raised-button color="accent" class="btn">Start</button>
               <button mat-raised-button class="btn"> {{q.numberOfQuestions}} Questions</button>
@@ -29,6 +30,15 @@
           </mat-card-actions>
         </mat-card>
       </div>
+
+
+    </div>
+    <div class="col-md-12" *ngIf="quizzes.length===0">
+      <mat-card>
+          <mat-card-content>
+            <h1>No Quizzes available in this category </h1>
+          </mat-card-content>
+      </mat-card>
     </div>
   </div>
 </div>

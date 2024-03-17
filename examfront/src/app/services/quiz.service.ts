@@ -20,21 +20,24 @@ export class QuizService {
 
   // delete quiz function
 
-  public deleteQuiz(requestHeader: any, qid: any)
-  {
-    return this._http.delete(`${baseUrl}/quiz/${qid}`,requestHeader)
+  public deleteQuiz(requestHeader: any, qid: any) {
+    return this._http.delete(`${baseUrl}/quiz/${qid}`, requestHeader);
   }
 
   // get a single quiz using id
-  public getQuiz(requestHeader: any, qid: any)
-  {
-    return this._http.get(`${baseUrl}/quiz/${qid}`,requestHeader)
+  public getQuiz(requestHeader: any, qid: any) {
+    return this._http.get(`${baseUrl}/quiz/${qid}`, requestHeader);
   }
 
   // update the quiz by id
 
-  public updateQuiz(quiz:any, requestHeader:any)
-  {
-    return this._http.put(`${baseUrl}/quiz/`,quiz,requestHeader)
+  public updateQuiz(quiz: any, requestHeader: any) {
+    return this._http.put(`${baseUrl}/quiz/`, quiz, requestHeader);
+  }
+
+  // to get quizzes by category
+
+  public getQuizzesOfCategory(cid: any, requestHeader: any) {
+    return this._http.get(`${baseUrl}/quiz/category/${cid}`, requestHeader)
   }
 }
