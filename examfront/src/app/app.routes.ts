@@ -16,6 +16,7 @@ import { normalGuard } from './services/normal.guard';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 
 export const routes: Routes = [
   {
@@ -70,7 +71,12 @@ export const routes: Routes = [
   {
     path: 'user-dashboard',
     component: UserDashboardComponent,
-    pathMatch: 'full',
     canActivate: [normalGuard],
+    children: [
+      {
+        path: ':catId',
+        component: LoadQuizComponent,
+      },
+    ],
   },
 ];
