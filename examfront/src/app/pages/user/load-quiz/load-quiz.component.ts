@@ -3,17 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgFor } from '@angular/common';
-import {  MatCardModule } from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-load-quiz',
   standalone: true,
-  imports: [
-    NgFor,
-    MatCardModule,
-    MatButtonModule
-  ],
+  imports: [NgFor, MatCardModule, MatButtonModule],
   templateUrl: './load-quiz.component.html',
   styleUrl: './load-quiz.component.css',
 })
@@ -41,6 +37,29 @@ export class LoadQuizComponent {
     this.catId = this._route.snapshot.params['catId'];
     // alert(this.catId)
 
+    this._route.params.subscribe((params) => {
+      this.catId = params['catId'];
+      if (this.catId == 0) {
+        this._quiz.quizzes(requestOptions).subscribe(
+          (data: any) => {
+            // console.log(data)
+            this.quizzes = data;
+            this._mat.open('Loaded all quizzes successfully!!', '', {
+              duration: 3000,
+            });
+          },
+          (error) => {
+            this._mat.open('Internal Server Error!!', '', {
+              duration: 3000,
+            });
+          }
+        );
+      } else {
+        // this.quizzes=[]
+        
+      }
+    });
+
     if (this.catId == 0) {
       this._quiz.quizzes(requestOptions).subscribe(
         (data: any) => {
@@ -57,7 +76,7 @@ export class LoadQuizComponent {
         }
       );
     } else {
-      alert('Loading specific quizzes');
+      // alert('Loading specific quizzes');
     }
   }
 }
