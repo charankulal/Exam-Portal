@@ -39,7 +39,7 @@ export class LoadQuizComponent {
     this._route.params.subscribe((params) => {
       this.catId = params['catId'];
       if (this.catId == 0) {
-        this._quiz.quizzes(requestOptions).subscribe(
+        this._quiz.getActiveQuizzes(requestOptions).subscribe(
           (data: any) => {
             // console.log(data)
             this.quizzes = data;
@@ -54,7 +54,7 @@ export class LoadQuizComponent {
           }
         );
       } else {
-        this._quiz.getQuizzesOfCategory(this.catId, requestOptions).subscribe(
+        this._quiz.getActiveQuizzesOfCategory(this.catId, requestOptions).subscribe(
           (data: any) => {
             this.quizzes = data;
             console.log(this.quizzes.length)
