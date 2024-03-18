@@ -1,15 +1,24 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NgFor, NgIf } from '@angular/common';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-load-quiz',
   standalone: true,
-  imports: [NgFor, MatCardModule, MatButtonModule, NgIf],
+  imports: [
+    NgFor,
+    MatCardModule,
+    MatButtonModule,
+    NgIf,
+    RouterLink,
+    RouterModule,
+    CommonModule,
+    MatButtonModule
+  ],
   templateUrl: './load-quiz.component.html',
   styleUrl: './load-quiz.component.css',
 })
@@ -54,20 +63,22 @@ export class LoadQuizComponent {
           }
         );
       } else {
-        this._quiz.getActiveQuizzesOfCategory(this.catId, requestOptions).subscribe(
-          (data: any) => {
-            this.quizzes = data;
-            console.log(this.quizzes.length)
-            this._mat.open('Loaded all quizzes successfully!!', '', {
-              duration: 3000,
-            });
-          },
-          (error) => {
-            this._mat.open('Internal Server Error!!', '', {
-              duration: 3000,
-            });
-          }
-        );
+        this._quiz
+          .getActiveQuizzesOfCategory(this.catId, requestOptions)
+          .subscribe(
+            (data: any) => {
+              this.quizzes = data;
+              console.log(this.quizzes.length);
+              this._mat.open('Loaded all quizzes successfully!!', '', {
+                duration: 3000,
+              });
+            },
+            (error) => {
+              this._mat.open('Internal Server Error!!', '', {
+                duration: 3000,
+              });
+            }
+          );
       }
     });
   }

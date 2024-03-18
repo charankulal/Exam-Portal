@@ -5,8 +5,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule, RouterLink } from '@angular/router';
 import { CategoryService } from '../../../services/category.service';
-import { error } from 'console';
-import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
