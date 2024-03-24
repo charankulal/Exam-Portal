@@ -2,16 +2,24 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuizService } from '../../../services/quiz.service';
 import { error } from 'console';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-instructions',
   standalone: true,
-  imports: [],
+  imports: [
+    MatCardModule,
+    MatDividerModule,
+    MatButtonModule
+  ],
   templateUrl: './instructions.component.html',
   styleUrl: './instructions.component.css',
 })
 export class InstructionsComponent {
   qid: any;
+  quiz:any;
 
   constructor(private _route: ActivatedRoute, private _quiz: QuizService) {}
 
@@ -20,7 +28,7 @@ export class InstructionsComponent {
 
     // Headers for get method
     let token = localStorage.getItem('token');
-    console.log(token);
+    // console.log(token);
     const headerDict = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -33,7 +41,7 @@ export class InstructionsComponent {
 
     this._quiz.getQuiz(requestOptions,this.qid).subscribe(
       (data:any)=>{
-        console.log(data)
+        this.quiz=data;
       },
       (error)=>{
         alert("Error in Loading the data")
