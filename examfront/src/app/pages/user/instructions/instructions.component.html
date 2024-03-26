@@ -8,7 +8,7 @@
             <mat-card-title>Read the Instructions carefully</mat-card-title>
             <mat-card-subtitle class="mt-4">
               One step more to go
-              <br>
+              <br />
             </mat-card-subtitle>
           </mat-card-header>
           <mat-divider></mat-divider>
@@ -20,51 +20,57 @@
             <mat-divider></mat-divider>
             <h1>Important Instructions</h1>
             <ul>
+              <li>This quiz is only for practice purpose.</li>
               <li>
-                This quiz is only for practice purpose.
-
+                The total time required to complete the quiz is
+                {{ quiz.numberOfQuestions * 2 }} minutes.
               </li>
               <li>
-                The total time required to complete the quiz is {{quiz.numberOfQuestions*2}} minutes.
-
+                Please submit the quiz within the
+                {{ quiz.numberOfQuestions * 2 }} minutes.
+              </li>
+              <li>You can attempt the quiz any number of times.</li>
+              <li>
+                There are totally
+                <b>{{ quiz.numberOfQuestions }} questions</b> in this quiz.
               </li>
               <li>
-                Please submit the quiz within the {{quiz.numberOfQuestions*2}} minutes.
+                Each question carries
+                <b>{{ quiz.maxMarks / quiz.numberOfQuestions }}</b> marks.
               </li>
-              <li>
-                You can attempt the quiz any number of times.
-              </li>
-              <li>
-                There are totally <b>{{quiz.numberOfQuestions}} questions</b> in this quiz.
-              </li>
-              <li>
-                Each question carries <b>{{quiz.maxMarks/quiz.numberOfQuestions}}</b> marks.
-              </li>
-              <li>
-                No negative marking.
-              </li>
-              <li>
-                All questions is of MCQ questions.
-              </li>
+              <li>No negative marking.</li>
+              <li>All questions is of MCQ questions.</li>
             </ul>
-            <br>
+            <br />
             <mat-divider></mat-divider>
             <h1>Attempting Quiz</h1>
             <ul>
               <li>Click <b>Start Quiz</b> button to start the quiz</li>
-              <li> The time will start the moment you click the Start quiz button</li>
-              <li>You cannot resume the test, if interrupted due to any reasons</li>
+              <li>
+                The time will start the moment you click the Start quiz button
+              </li>
+              <li>
+                You cannot resume the test, if interrupted due to any reasons
+              </li>
               <li>Scroll down to move to the next question</li>
               <li>Click on the Submit Quiz button on completion of the quiz</li>
-              <li>Report of the test is automatically generated in the form of PDF copy</li>
+              <li>
+                Report of the test is automatically generated in the form of PDF
+                copy
+              </li>
             </ul>
-
           </mat-card-content>
 
-          <mat-card-actions >
+          <mat-card-actions>
             <!-- actions -->
             <div class="container text-center">
-              <button mat-raised-button color="warn">Start Quiz</button>
+              <button
+              (click)="startQuiz()"
+                mat-raised-button
+                color="warn"
+              >
+                Start Quiz
+              </button>
             </div>
           </mat-card-actions>
         </mat-card>
@@ -72,3 +78,6 @@
     </div>
   </div>
 </div>
+
+
+<!-- [routerLink]="'/start/' + qid" -->
