@@ -1,14 +1,26 @@
-import { LocationStrategy } from '@angular/common';
+import { LocationStrategy, NgIf, JsonPipe, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { json } from 'stream/consumers';
+
 import { QuestionService } from '../../../services/question.service';
 import Swal from 'sweetalert2';
+import { MatCardActions, MatCardModule } from '@angular/material/card';
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @Component({
   selector: 'app-start',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf,
+    MatCardModule,
+    MatCardActions,
+    JsonPipe,
+    NgFor,
+    MatDividerModule,
+    MatButtonModule
+  ],
   templateUrl: './start.component.html',
   styleUrl: './start.component.css',
 })
@@ -41,6 +53,7 @@ export class StartComponent {
       .subscribe(
         (data: any) => {
           console.log(data);
+          this.questions=data
         },
         (error) => {
           console.log(error);
