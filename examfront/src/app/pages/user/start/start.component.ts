@@ -1,13 +1,14 @@
 import { LocationStrategy, NgIf, JsonPipe, NgFor } from '@angular/common';
-import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, NgModule } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import { QuestionService } from '../../../services/question.service';
 import Swal from 'sweetalert2';
 import { MatCardActions, MatCardModule } from '@angular/material/card';
 import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-
+import { FormsModule, NgModel } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-start',
@@ -19,14 +20,21 @@ import { MatButtonModule } from '@angular/material/button';
     JsonPipe,
     NgFor,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    RouterModule,
+    FormsModule,
   ],
   templateUrl: './start.component.html',
   styleUrl: './start.component.css',
 })
 export class StartComponent {
   qid: any;
-  questions:any;
+  questions: any;
+  marksGot = 0;
+  correctAnswers = 0;
+  attempted = 0;
+  isSubmit=false
   constructor(
     private locationSt: LocationStrategy,
     private _route: ActivatedRoute,
@@ -52,8 +60,11 @@ export class StartComponent {
       .getQuestionsOfQuizForTest(this.qid, requestOptions)
       .subscribe(
         (data: any) => {
-          console.log(data);
-          this.questions=data
+          this.questions = data;
+          this.questions.forEach((q: any) => {
+            q['givenAnswer'] = '';
+          });
+          console.log(this.questions);
         },
         (error) => {
           console.log(error);
@@ -66,6 +77,41 @@ export class StartComponent {
     history.pushState(null, '', location.href);
     this.locationSt.onPopState(() => {
       history.pushState(null, '', location.href);
+    });
+  }
+  submitQuiz() {
+    this.marksGot=0;
+    this.attempted=0;
+    this.correctAnswers=0;
+    Swal.fire({
+      title: 'Do you want to submit the quiz?',
+      showCancelButton: true,
+      confirmButtonText: 'Submit',
+      icon: 'info',
+    }).then((e) => {
+      if (e.isConfirmed) {
+        this.isSubmit=true
+        let marksSingle =
+              this.questions[0].quiz.maxMarks / this.questions.length;
+        // Calculation
+        // console.log(this.questions)
+        this.questions.forEach((q: any) => {
+          if (q.givenAnswer.trim() == q.answer) {
+            this.correctAnswers++;
+
+            this.marksGot += marksSingle;
+          }
+
+          if(q.givenAnswer.trim()!='')
+            {
+              this.attempted++;
+            }
+
+        });
+      }
+      console.log("Correct"+this.correctAnswers)
+          console.log("Marks"+this.marksGot)
+          console.log("Attempted"+this.attempted)
     });
   }
 }

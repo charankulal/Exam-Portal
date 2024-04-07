@@ -1,4 +1,4 @@
-<div class="bootstrap-wrapper">
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2">
@@ -26,19 +26,25 @@
             <div class="row" style="margin-top: 10px">
               <div class="col-md-6">
                 <input
+                  title="option1"
                   type="radio"
-                  [name]="i"
+                  [name]="'' + i"
                   id="option1"
                   [value]="q.option1"
+                  [(ngModel)]="q.givenAnswer"
+                  [ngModelOptions]="{ standalone: true }"
                 />
                 {{ q.option1 }}
               </div>
               <div class="col-md-6">
                 <input
+                  title="option2"
                   type="radio"
-                  [name]="i"
+                  [name]="'' + i"
                   id="option2"
                   [value]="q.option2"
+                  [(ngModel)]="q.givenAnswer"
+                  [ngModelOptions]="{ standalone: true }"
                 />
                 {{ q.option2 }}
               </div>
@@ -47,19 +53,25 @@
             <div class="row" style="margin-top: 10px">
               <div class="col-md-6">
                 <input
+                  title="option3"
                   type="radio"
-                  [name]="i"
+                  [name]="'' + i"
                   id="option3"
                   [value]="q.option3"
+                  [(ngModel)]="q.givenAnswer"
+                  [ngModelOptions]="{ standalone: true }"
                 />
                 {{ q.option3 }}
               </div>
               <div class="col-md-6">
                 <input
+                  title="option4"
                   type="radio"
-                  [name]="i"
+                  [name]="'' + i"
                   id="option4"
                   [value]="q.option4"
+                  [(ngModel)]="q.givenAnswer"
+                  [ngModelOptions]="{ standalone: true }"
                 />
                 {{ q.option4 }}
               </div>
@@ -67,13 +79,40 @@
           </mat-card-content>
         </mat-card>
         <div class="container text-center action-btn">
-          <button mat-raised-button color="warn">Submit Quiz</button>
+          <button mat-raised-button color="warn" (click)="submitQuiz()">
+            Submit Quiz
+          </button>
         </div>
       </div>
       <div class="col-md-2">
         <!-- Progress bar -->
         <h2>Progress Bar</h2>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-wrapper" *ngIf="isSubmit">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Quiz Result</mat-card-title>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+        <mat-card-content class="text-center">
+          <h3>Marks Got: {{ marksGot }}</h3>
+          <h3>Correct Answers: {{ correctAnswers }}</h3>
+          <h3>Questions Attempted: {{ attempted }}</h3>
+        </mat-card-content>
+        <mat-card-actions class="text-center">
+          <div class="container text-center">
+            <button mat-raised-button color="primary" class="mx-2">Print</button>
+            <button mat-raised-button color="accent" [routerLink]="['/user-dashboard/0']" >Home</button>
+          </div>
+
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 </div>
