@@ -9,6 +9,7 @@ import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, NgModel } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-start',
@@ -24,6 +25,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     RouterModule,
     FormsModule,
+    MatProgressSpinnerModule,
   ],
   templateUrl: './start.component.html',
   styleUrl: './start.component.css',
@@ -34,7 +36,8 @@ export class StartComponent {
   marksGot = 0;
   correctAnswers = 0;
   attempted = 0;
-  isSubmit=false
+  isSubmit = false;
+  timer: any;
   constructor(
     private locationSt: LocationStrategy,
     private _route: ActivatedRoute,
@@ -61,10 +64,12 @@ export class StartComponent {
       .subscribe(
         (data: any) => {
           this.questions = data;
+          this.timer = this.questions.length * 2 * 60;
           this.questions.forEach((q: any) => {
             q['givenAnswer'] = '';
           });
           console.log(this.questions);
+          this.startTimer()
         },
         (error) => {
           console.log(error);
@@ -80,9 +85,9 @@ export class StartComponent {
     });
   }
   submitQuiz() {
-    this.marksGot=0;
-    this.attempted=0;
-    this.correctAnswers=0;
+    this.marksGot = 0;
+    this.attempted = 0;
+    this.correctAnswers = 0;
     Swal.fire({
       title: 'Do you want to submit the quiz?',
       showCancelButton: true,
@@ -90,9 +95,9 @@ export class StartComponent {
       icon: 'info',
     }).then((e) => {
       if (e.isConfirmed) {
-        this.isSubmit=true
+        this.isSubmit = true;
         let marksSingle =
-              this.questions[0].quiz.maxMarks / this.questions.length;
+          this.questions[0].quiz.maxMarks / this.questions.length;
         // Calculation
         // console.log(this.questions)
         this.questions.forEach((q: any) => {
@@ -102,16 +107,34 @@ export class StartComponent {
             this.marksGot += marksSingle;
           }
 
-          if(q.givenAnswer.trim()!='')
-            {
-              this.attempted++;
-            }
-
+          if (q.givenAnswer.trim() != '') {
+            this.attempted++;
+          }
         });
       }
-      console.log("Correct"+this.correctAnswers)
-          console.log("Marks"+this.marksGot)
-          console.log("Attempted"+this.attempted)
+      console.log('Correct' + this.correctAnswers);
+      console.log('Marks' + this.marksGot);
+      console.log('Attempted' + this.attempted);
     });
+  }
+
+  
+
+  startTimer() {
+    let t = window.setInterval(() => {
+      if (this.timer <= 0) {
+        this.submitQuiz();
+        clearInterval(t);
+      } else {
+        this.timer--;
+      }
+    }, 1000);
+  }
+
+  getFormattedTime()
+  {
+    let mm=Math.floor(this.timer/60)
+    let ss=this.timer-mm*60
+    return `${mm} Min : ${ss} Sec`
   }
 }
