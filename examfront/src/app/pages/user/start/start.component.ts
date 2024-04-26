@@ -69,7 +69,7 @@ export class StartComponent {
             q['givenAnswer'] = '';
           });
           console.log(this.questions);
-          this.startTimer()
+          this.startTimer();
         },
         (error) => {
           console.log(error);
@@ -118,8 +118,6 @@ export class StartComponent {
     });
   }
 
-  
-
   startTimer() {
     let t = window.setInterval(() => {
       if (this.timer <= 0) {
@@ -131,10 +129,9 @@ export class StartComponent {
     }, 1000);
   }
 
-  getFormattedTime()
-  {
-    let mm=Math.floor(this.timer/60)
-    let ss=this.timer-mm*60
-    return `${mm} Min : ${ss} Sec`
+  getFormattedTime() {
+    let mm = Math.floor(this.timer / 60);
+    let ss = this.timer - mm * 60;
+    return `${mm} Min : ${ss} Sec`;
   }
 }
